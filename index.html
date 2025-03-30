@@ -1,142 +1,39 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: url('Images/bg-pattern.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .card {
-    background-color: #fffbe7;
-    width: 90%;
-    padding: 24px;
-    margin: 30px auto;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-  }
-  
-  .main-img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    margin: 0 auto 20px;
-    display: block;
-  }
-  
-  h1 {
-    color: #228b22;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    color: #444;
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  
-  button {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: #228b22;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-  }
-  
-  button:hover {
-    background-color: #1a6e1a;
-    transform: scale(1.05);
-  }
-  
-  #message {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #8B0000;
-    font-weight: 600;
-    white-space: pre-wrap;
-    padding: 0 10px;
-  }
-  
-  .signoff {
-    margin-top: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    color: #444;
-  }
-  
-  .audio-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 12px;
-  }
-  
-  .audio-icon {
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .audio-icon:hover {
-    transform: scale(1.2);
-  }
-  
-  .floating-box {
-    position: absolute;
-    background-color: #fff8dc;
-    padding: 12px 16px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    color: #444;
-    font-size: 14px;
-    z-index: 999;
-    display: none;
-    max-width: 220px;
-  }
-  
-  @keyframes fall {
-    to {
-      transform: translateY(300px);
-      opacity: 0;
-    }
-  }
-  
-  .confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #ffcc00;
-    animation: fall 1s linear forwards;
-    border-radius: 50%;
-    z-index: 9999;
-  }
-  
-  @keyframes wiggle {
-    0% { rotate: -2deg; }
-    50% { rotate: 2deg; }
-    100% { rotate: -2deg; }
-  }
-  
-  .face-img {
-    cursor: pointer;
-    width: 80px;
-    position: absolute;
-    left: 50%;
-    top: 75%;
-    transform: translate(-50%, -50%);
-    transform-origin: center;
-    transition: transform 0.2s ease-in-out;
-    z-index: 9999;
-  }
-  
-  .face-img:hover {
-    animation: wiggle 0.5s infinite;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Hari Raya</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 🎶 Background Music -->
+  <audio id="bg-music" src="audio/raya.mp3" autoplay loop></audio>
+
+  <!-- 💌 Main Card Content -->
+  <div class="card">
+    <img src="Images/ketupat.png" alt="Ketupat" class="main-img">
+    <h1>Selamat Hari Raya 💚</h1>
+    <p>Maaf Zahir dan Batin. Wishing you a joyful and peaceful celebration!</p>
+    <div class="signoff">With love, Ms. Zalikha</div>
+
+    <!-- 🎧 Audio Buttons -->
+    <div class="audio-controls">
+      <span class="audio-icon" onclick="playAudio()">🔊</span>
+      <span class="audio-icon" onclick="pauseAudio()">⏸️</span>
+    </div>
+
+    <!-- 💬 Typewriter Message -->
+    <div id="message"></div>
+  </div>
+
+  <!-- 👩‍🎨 Your Face & Message Bubble -->
+  <img src="Images/myface.png" alt="Your Drawing" class="face-img" onclick="moveAround()">
+  <div id="floating-box" class="floating-box"></div>
+
+  <!-- ⚡ Script -->
+  <script src="script.js"></script>
+</body>
+</html>
