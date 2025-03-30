@@ -1,202 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Selamat Hari Raya</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-image: url('Images/bg-pattern.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      font-family: 'Quicksand', sans-serif;
-      overflow-x: hidden;
+body {
+    margin: 0;
+    padding: 0;
+    background: url('Images/bg-pattern.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .card {
+    background-color: #fffbe7;
+    width: 90%;
+    padding: 24px;
+    margin: 30px auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+  }
+  
+  .main-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  h1 {
+    color: #228b22;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #444;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #228b22;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #1a6e1a;
+    transform: scale(1.05);
+  }
+  
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #8B0000;
+    font-weight: 600;
+    white-space: pre-wrap;
+    padding: 0 10px;
+  }
+  
+  .signoff {
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .audio-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 12px;
+  }
+  
+  .audio-icon {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .audio-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .floating-box {
+    position: absolute;
+    background-color: #fff8dc;
+    padding: 12px 16px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #444;
+    font-size: 14px;
+    z-index: 999;
+    display: none;
+    max-width: 220px;
+  }
+  
+  @keyframes fall {
+    to {
+      transform: translateY(300px);
+      opacity: 0;
     }
-
-    .floating-box {
-      position: absolute;
-      background-color: #fff8dc;
-      padding: 15px 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      color: #444;
-      font-size: 16px;
-      z-index: 999;
-      display: none;
-      max-width: 250px;
-    }
-
-    #message {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #8B0000;
-      font-weight: 600;
-      font-family: 'Quicksand', sans-serif;
-      white-space: pre-wrap;
-    }
-
-    .audio-controls {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .audio-icon {
-      font-size: 24px;
-      margin: 0 10px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .audio-icon:hover {
-      transform: scale(1.2);
-    }
-
-    .face-img {
-      transition: transform 0.2s;
-    }
-
-    .face-img:hover {
-      transform: scale(1.1);
-    }
-
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #ffcc00;
-      animation: fall 1s linear forwards;
-      border-radius: 50%;
-      z-index: 9999;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(300px);
-        opacity: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <!-- Ketupat drawing -->
-    <img src="Images/ketupat.png" alt="Ketupat" class="main-img">
-
-    <h1 style="color: #228b22;">Selamat Hari Raya 💚</h1>
-    <p style="color: #444;">Maaf Zahir dan Batin. Wishing you a joyful and peaceful celebration!</p>
-
-    <!-- Clickable face image -->
-    <img src="Images/myface.png" alt="Your Drawing" class="face-img" onclick="moveAround()">
-
-    <!-- Message output -->
-    <div id="message"></div>
-
-    <!-- Sign off -->
-    <p class="signoff" style="font-weight: 600; color: #444;">With love, Ms. Zalikha</p>
-
-    <!-- Custom audio controls below the message -->
-    <div class="audio-controls">
-      <span class="audio-icon" onclick="toggleAudio()">🔊</span>
-      <span class="audio-icon" onclick="pauseAudio()">⏸️</span>
-      <span class="audio-icon" onclick="playAudio()">▶️</span>
-    </div>
-  </div>
-
-  <!-- Special floating message -->
-  <div id="floating-box" class="floating-box"></div>
-
-  <!-- Background music (autoplay hidden) -->
-  <audio id="bg-music" autoplay loop>
-    <source src="audio/raya.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    const audio = document.getElementById("bg-music");
-    const messageEl = document.getElementById("message");
-
-    window.addEventListener("DOMContentLoaded", function () {
-      audio.volume = 0.3;
-      audio.play().catch((e) => {
-        console.log("Autoplay prevented. User interaction required.", e);
-      });
-    });
-
-    function playAudio() {
-      audio.play();
-    }
-
-    function pauseAudio() {
-      audio.pause();
-    }
-
-    function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-
-    function showMessage() {
-      messageEl.innerText = "";
-      const message = "Wishing you and your loved ones a joyful Hari Raya filled with laughter, warmth, and lots of ketupat! 🌙✨";
-      let i = 0;
-      const typing = setInterval(() => {
-        if (i < message.length) {
-          messageEl.innerText += message[i];
-          i++;
-        } else {
-          clearInterval(typing);
-        }
-      }, 40);
-    }
-
-    function moveAround() {
-      const face = document.querySelector('.face-img');
-      const floatingBox = document.getElementById('floating-box');
-
-      const randomX = Math.random() * (window.innerWidth - 150);
-      const randomY = Math.random() * (window.innerHeight - 150);
-
-      face.style.position = 'absolute';
-      face.style.left = randomX + 'px';
-      face.style.top = randomY + 'px';
-
-      floatingBox.style.left = (randomX + 80) + 'px';
-      floatingBox.style.top = (randomY - 30) + 'px';
-      floatingBox.style.display = 'block';
-
-      floatingBox.innerHTML = getRandomMessage();
-
-      triggerConfetti(randomX, randomY);
-    }
-
-    function getRandomMessage() {
-      const messages = [
-        "Clicking me won't grant you duit Raya... or will it? 🤑",
-        "I'm not hiding duit Raya here. Or am I? 🤔",
-        "You just tapped my face. Bold move. I like it 😏",
-        "If you laugh, you owe me lemang! 🍚",
-        "You're officially cooler than a Raya pop-up card 🫶"
-      ];
-      return messages[Math.floor(Math.random() * messages.length)];
-    }
-
-    function triggerConfetti(x, y) {
-      for (let i = 0; i < 20; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = `${x + Math.random() * 100 - 50}px`;
-        confetti.style.top = `${y}px`;
-        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 1000);
-      }
-    }
-  </script>
-</body>
-</html>
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcc00;
+    animation: fall 1s linear forwards;
+    border-radius: 50%;
+    z-index: 9999;
+  }
+  
+  @keyframes wiggle {
+    0% { rotate: -2deg; }
+    50% { rotate: 2deg; }
+    100% { rotate: -2deg; }
+  }
+  
+  .face-img {
+    cursor: pointer;
+    width: 80px;
+    position: absolute;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .face-img:hover {
+    animation: wiggle 0.5s infinite;
+  }
