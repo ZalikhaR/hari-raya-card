@@ -4,7 +4,7 @@ const messageEl = document.getElementById("message");
 window.addEventListener("DOMContentLoaded", function () {
   audio.volume = 0.3;
   audio.play().catch((e) => {
-    console.log("Autoplay prevented. User interaction required.", e);
+    console.log("Autoplay blocked until user interacts", e);
   });
 });
 
@@ -16,15 +16,6 @@ function pauseAudio() {
   audio.pause();
 }
 
-function toggleAudio() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-
-// 📝 Typewriter message function
 function showMessage() {
   messageEl.innerText = "";
   const message = "Wishing you and your loved ones a joyful Hari Raya filled with laughter, warmth, and lots of ketupat! 🌙✨";
@@ -39,20 +30,19 @@ function showMessage() {
   }, 40);
 }
 
-// 😆 Floating box and movement
+// 💫 Face movement + floating box + confetti
 function moveAround() {
   const face = document.querySelector('.face-img');
   const floatingBox = document.getElementById('floating-box');
 
-  const randomX = Math.random() * (window.innerWidth - 150);
-  const randomY = Math.random() * (window.innerHeight - 150);
+  const randomX = Math.random() * (window.innerWidth - 120);
+  const randomY = Math.random() * (window.innerHeight - 120);
 
-  face.style.position = 'absolute';
   face.style.left = randomX + 'px';
   face.style.top = randomY + 'px';
 
-  floatingBox.style.left = (randomX + 80) + 'px';
-  floatingBox.style.top = (randomY - 30) + 'px';
+  floatingBox.style.left = (randomX + 60) + 'px';
+  floatingBox.style.top = (randomY - 40) + 'px';
   floatingBox.style.display = 'block';
 
   floatingBox.innerHTML = getRandomMessage();
@@ -71,7 +61,6 @@ function getRandomMessage() {
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
-// 🎉 Confetti burst!
 function triggerConfetti(x, y) {
   for (let i = 0; i < 20; i++) {
     const confetti = document.createElement('div');
