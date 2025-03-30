@@ -121,3 +121,4 @@ function triggerConfetti(x, y) {
 window.onload = function () {
   showMessage();
 };
+window.moveAround = moveAround;
