@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Selamat Hari Raya</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <!-- 🎶 Background Music -->
@@ -14,7 +14,7 @@
 
   <!-- 💌 Main Card Content -->
   <div class="card">
-    <img src="Images/ketupat.png" alt="Ketupat" class="main-img">
+    <img src="Images/ketupat.png" alt="Ketupat" class="main-img" />
     <h1>Selamat Hari Raya 💚</h1>
     <p>Maaf Zahir dan Batin. Wishing you a joyful and peaceful celebration!</p>
     <div class="signoff">With love, Ms. Zalikha</div>
@@ -30,10 +30,24 @@
   </div>
 
   <!-- 👩‍🎨 Your Face & Message Bubble -->
-<img src="Images/myface.png" alt="Your Drawing" class="face-img" onclick="moveAround()">
-  <div id="floating-box" class="floating-box"></div>
+  <div class="face-wrapper">
+    <img src="Images/myface.png" alt="Your Drawing" class="face-img" onclick="moveAround()" />
+    <div class="tap-hint">Tap me!</div>
+    <div id="floating-box" class="floating-box"></div>
+  </div>
+
+  <!-- 📖 Guestbook Section -->
+  <div class="guestbook">
+    <h2>📖 Guestbook</h2>
+    <form id="guestbook-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <textarea id="guest-message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div id="guestbook-messages"></div>
+  </div>
 
   <!-- ⚡ Script -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
