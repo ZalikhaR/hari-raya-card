@@ -19,31 +19,36 @@ const database = getDatabase(app);
 const guestbookRef = ref(database, "guestbook");
 
 // Send message
-document.getElementById("guestbook-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const message = document.getElementById("guest-message").value;
-  push(guestbookRef, {
-    name,
-    message
+const guestForm = document.getElementById("guestbook-form");
+if (guestForm) {
+  guestForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("guest-message").value;
+    push(guestbookRef, {
+      name,
+      message
+    });
+    this.reset();
   });
-  this.reset();
-});
+}
 
 // Display messages
-onValue(guestbookRef, (snapshot) => {
-  const messagesContainer = document.getElementById("guestbook-messages");
-  messagesContainer.innerHTML = "";
-  snapshot.forEach((childSnapshot) => {
-    const entry = childSnapshot.val();
-    const div = document.createElement("div");
-    div.classList.add("message-entry");
-    div.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
-    messagesContainer.appendChild(div);
+const messagesContainer = document.getElementById("guestbook-messages");
+if (messagesContainer) {
+  onValue(guestbookRef, (snapshot) => {
+    messagesContainer.innerHTML = "";
+    snapshot.forEach((childSnapshot) => {
+      const entry = childSnapshot.val();
+      const div = document.createElement("div");
+      div.classList.add("message-entry");
+      div.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
+      messagesContainer.appendChild(div);
+    });
   });
-});
+}
 
-
+// Audio
 const audio = document.getElementById("bg-music");
 const messageEl = document.getElementById("message");
 
@@ -62,6 +67,7 @@ function pauseAudio() {
   audio.pause();
 }
 
+// Typewriter Message
 function showMessage() {
   messageEl.innerText = "";
   const message = "Wishing you and your loved ones a joyful Hari Raya filled with laughter, warmth, and lots of ketupat! 🌙✨";
@@ -90,7 +96,6 @@ function moveAround() {
   floatingBox.style.left = (randomX + 60) + 'px';
   floatingBox.style.top = (randomY - 40) + 'px';
   floatingBox.style.display = 'block';
-
   floatingBox.innerHTML = getRandomMessage();
 
   triggerConfetti(randomX, randomY);
@@ -118,7 +123,11 @@ function triggerConfetti(x, y) {
     setTimeout(() => confetti.remove(), 1000);
   }
 }
+
+// Global functions
 window.onload = function () {
   showMessage();
 };
 window.moveAround = moveAround;
+window.playAudio = playAudio;
+window.pauseAudio = pauseAudio;
