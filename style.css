@@ -140,17 +140,3 @@ body {
   .face-img:hover {
     animation: wiggle 0.5s infinite;
   }
-.face-hint {
-  text-align: center;
-  margin-top: -10px;
-  font-size: 14px;
-  color: #555;
-  font-style: italic;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
-}
