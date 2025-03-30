@@ -1,5 +1,3 @@
-
-// Audio
 const audio = document.getElementById("bg-music");
 const messageEl = document.getElementById("message");
 
@@ -18,7 +16,6 @@ function pauseAudio() {
   audio.pause();
 }
 
-// Typewriter Message
 function showMessage() {
   messageEl.innerText = "";
   const message = "Wishing you and your loved ones a joyful Hari Raya filled with laughter, warmth, and lots of ketupat! 🌙✨";
@@ -33,7 +30,6 @@ function showMessage() {
   }, 40);
 }
 
-// 💫 Face movement + floating box + confetti
 function moveAround() {
   const face = document.querySelector('.face-img');
   const floatingBox = document.getElementById('floating-box');
@@ -75,10 +71,10 @@ function triggerConfetti(x, y) {
   }
 }
 
-// Global functions
 window.onload = function () {
   showMessage();
 };
+
 window.moveAround = moveAround;
 window.playAudio = playAudio;
 window.pauseAudio = pauseAudio;
