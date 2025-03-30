@@ -72,3 +72,6 @@ function triggerConfetti(x, y) {
     setTimeout(() => confetti.remove(), 1000);
   }
 }
+window.onload = function () {
+  showMessage();
+};
