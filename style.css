@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fef9ec;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .card {
+    background-color: #fffbe7;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+  }
+  
+  .main-img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    color: #228b22;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #444;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #228b22;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #1a6e1a;
+    transform: scale(1.05);
+  }
+  
+  #message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #8B0000;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    white-space: pre-wrap;
+  }
+  
+  .signoff {
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .audio-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .audio-icon {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .audio-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .floating-box {
+    position: absolute;
+    background-color: #fff8dc;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #444;
+    font-size: 16px;
+    z-index: 999;
+    display: none;
+    max-width: 250px;
+  }
+  
+  /* Confetti animation */
+  @keyframes fall {
+    to {
+      transform: translateY(300px);
+      opacity: 0;
+    }
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcc00;
+    animation: fall 1s linear forwards;
+    border-radius: 50%;
+    z-index: 9999;
+  }
+  
+  /* Safe Wiggle Animation */
+  @keyframes wiggle {
+    0% { rotate: -2deg; }
+    50% { rotate: 2deg; }
+    100% { rotate: -2deg; }
+  }
+  
+  .face-img {
+    cursor: pointer;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+    z-index: 9999; /* ✨ This is key! */
+  }
+  
+  .face-img:hover {
+    animation: wiggle 0.5s infinite;
+  }
