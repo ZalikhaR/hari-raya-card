@@ -147,17 +147,3 @@ body {
   text-align: center;
   margin-top: 160px; /* push it below the main card a bit */
 }
-
-.tap-hint {
-  font-size: 14px;
-  color: #555;
-  margin-top: 6px;
-  animation: pulse 1.5s infinite;
-  font-style: italic;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
-}
